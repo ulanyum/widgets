@@ -134,16 +134,6 @@ class _ButtonlarState extends State<Buttonlar> {
           ),
         ),
         Expanded(
-          child: Chip(
-            avatar: CircleAvatar(
-              // avatar alır
-              backgroundColor: Colors.grey.shade800,
-              child: Text('AB'),
-            ),
-            label: Text('Chip'), // text alır
-          ),
-        ),
-        Expanded(
           child: IconButton(
             icon: Icon(Icons.bluetooth),
             tooltip: 'Buton tipi',
@@ -151,25 +141,28 @@ class _ButtonlarState extends State<Buttonlar> {
           ),
         ),
         Expanded(
-          child: Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 117, 150, 208),
-              ),
-              child: DropdownButton(
-                value: dropdownValue,
-                onChanged: (String? value) {
-                  // This is called when the user selects an item.
-                  setState(() {
-                    dropdownValue = value!;
-                  });
-                },
-                items: list.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              )),
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 117, 150, 208),
+                ),
+                child: DropdownButton(
+                  value: dropdownValue,
+                  onChanged: (String? value) {
+                    // This is called when the user selects an item.
+                    setState(() {
+                      dropdownValue = value!;
+                    });
+                  },
+                  items: list.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                )),
+          ),
         ),
       ]),
     );

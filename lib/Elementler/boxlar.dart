@@ -9,14 +9,12 @@ class Boxlar extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Expanded(
-            child: SizedBox(
-              width: 200.0,
-              height: 300.0,
-              child: Card(
-                child: Center(child: Text('SizedBox')),
-                color: Colors.amberAccent,
-              ),
+          SizedBox(
+            width: 200.0,
+            height: 300.0,
+            child: Card(
+              child: Center(child: Text('SizedBox')),
+              color: Colors.amberAccent,
             ),
           ),
           Expanded(
