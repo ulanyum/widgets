@@ -101,75 +101,84 @@ class _FormlarState extends State<Formlar> {
                         },
                       ),
                       Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: ElevatedButton(
-                            focusNode: _kaydetFocusNode,
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {}
-                            },
-                            child: const Text('Kaydet'),
-                          ),
+                        child: ElevatedButton(
+                          focusNode: _kaydetFocusNode,
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {}
+                          },
+                          child: const Text('Kaydet'),
                         ),
                       ),
-                      RadioListTile(
-                          title: Text("Erkek"),
-                          value: 1,
-                          groupValue: deger,
-                          onChanged: (int? gelen) {
-                            setState(() {
-                              deger = gelen!;
-                            });
-                          }),
-                      RadioListTile(
-                          title: Text("Kadın"),
-                          value: 2,
-                          groupValue: deger,
-                          onChanged: (int? gelen) {
-                            setState(() {
-                              deger = gelen!;
-                            });
-                          }),
-                      RadioListTile(
-                          title: Text("Diğer"),
-                          value: 3,
-                          groupValue: deger,
-                          onChanged: (int? gelen) {
-                            setState(() {
-                              deger = gelen!;
-                            });
-                          }),
-                      CheckboxListTile(
-                          title: Text("Checkbox"),
-                          value: calisiyor,
-                          controlAffinity: ListTileControlAffinity.leading,
-                          onChanged: (bool? veri) {
-                            print("Seçildi");
-                            setState(() {
-                              calisiyor = veri!;
-                            });
-                          }),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "İngilizce Seviyeniz " +
-                                sliderDeger.round().toString(),
-                            style: TextStyle(
-                                color: Colors.black54,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Slider(
-                              value: sliderDeger,
-                              min: 0,
-                              max: 5,
-                              onChanged: (double newValue) {
-                                setState(() {
-                                  sliderDeger = newValue;
-                                });
-                              })
-                        ],
+                      Expanded(
+                        child: RadioListTile(
+                            title: Text("Erkek"),
+                            value: 1,
+                            groupValue: deger,
+                            onChanged: (int? gelen) {
+                              setState(() {
+                                deger = gelen!;
+                              });
+                            }),
+                      ),
+                      Expanded(
+                        child: RadioListTile(
+                            title: Text("Kadın"),
+                            value: 2,
+                            groupValue: deger,
+                            onChanged: (int? gelen) {
+                              setState(() {
+                                deger = gelen!;
+                              });
+                            }),
+                      ),
+                      Expanded(
+                        child: RadioListTile(
+                            title: Text("Diğer"),
+                            value: 3,
+                            groupValue: deger,
+                            onChanged: (int? gelen) {
+                              setState(() {
+                                deger = gelen!;
+                              });
+                            }),
+                      ),
+                      Expanded(
+                        child: CheckboxListTile(
+                            title: Text("Checkbox"),
+                            value: calisiyor,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            onChanged: (bool? veri) {
+                              print("Seçildi");
+                              setState(() {
+                                calisiyor = veri!;
+                              });
+                            }),
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "İngilizce Seviyeniz " +
+                                  sliderDeger.round().toString(),
+                              style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Expanded(
+                              child: Slider(
+                                  value: sliderDeger,
+                                  min: 0,
+                                  max: 5,
+                                  onChanged: (double newValue) {
+                                    setState(() {
+                                      sliderDeger = newValue;
+                                    });
+                                  }),
+                            )
+                          ],
+                        ),
                       ),
                     ])),
           ),

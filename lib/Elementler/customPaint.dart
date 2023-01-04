@@ -15,30 +15,35 @@ class _CustomPaintsState extends State<CustomPaints> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CustomPaint(
-              child: const Text(
-                "Pacman",
-                style: TextStyle(color: Colors.blueAccent, fontSize: 30),
-              ),
-              painter: MyPainter(),
-            ),
-          ),
-          Center(
+          Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                width: 400,
-                height: 400,
-                child: CustomPaint(
-                  child: Center(
-                    child: const Text(
-                      "Baska Çizim",
-                      style: TextStyle(color: Colors.blueAccent, fontSize: 30),
+              child: CustomPaint(
+                child: const Text(
+                  "Pacman",
+                  style: TextStyle(color: Colors.blueAccent, fontSize: 30),
+                ),
+                painter: MyPainter(),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: 400,
+                  height: 400,
+                  child: CustomPaint(
+                    child: Center(
+                      child: const Text(
+                        "Baska Çizim",
+                        style:
+                            TextStyle(color: Colors.blueAccent, fontSize: 30),
+                      ),
                     ),
+                    painter: MyPainter2(),
                   ),
-                  painter: MyPainter2(),
                 ),
               ),
             ),

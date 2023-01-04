@@ -101,62 +101,76 @@ class _ButtonlarState extends State<Buttonlar> {
                 ),
               )),
         ),
-        TextButton(
-          onPressed: () {},
-          child: Text("Text Button"),
-          style: TextButton.styleFrom(),
-        ),
-        OutlinedButton(
-          onPressed: () {},
-          child: const Text('Outline Button'),
-        ),
-        FloatingActionButton(
-          // Scaffold parametresi olan floatActionButton a atanır
-          onPressed: () {}, // bir fonksiyon tetikler
-          child: Icon(Icons.add), // floatingActionButton icon tipi
-        ),
-        Switch(
-          value: switchValue,
-          onChanged: (value) {
-            setState(() {
-              switchValue = value;
-              print(switchValue);
-            });
-          },
-          activeColor: Colors.blueAccent,
-        ),
-        Chip(
-          avatar: CircleAvatar(
-            // avatar alır
-            backgroundColor: Colors.grey.shade800,
-            child: Text('AB'),
+        Expanded(
+          child: TextButton(
+            onPressed: () {},
+            child: Text("Text Button"),
+            style: TextButton.styleFrom(),
           ),
-          label: Text('Chip'), // text alır
         ),
-        IconButton(
-          icon: Icon(Icons.bluetooth),
-          tooltip: 'Buton tipi',
-          onPressed: () {},
+        Expanded(
+          child: OutlinedButton(
+            onPressed: () {},
+            child: const Text('Outline Button'),
+          ),
         ),
-        Container(
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 117, 150, 208),
+        Expanded(
+          child: FloatingActionButton(
+            // Scaffold parametresi olan floatActionButton a atanır
+            onPressed: () {}, // bir fonksiyon tetikler
+            child: Icon(Icons.add), // floatingActionButton icon tipi
+          ),
+        ),
+        Expanded(
+          child: Switch(
+            value: switchValue,
+            onChanged: (value) {
+              setState(() {
+                switchValue = value;
+                print(switchValue);
+              });
+            },
+            activeColor: Colors.blueAccent,
+          ),
+        ),
+        Expanded(
+          child: Chip(
+            avatar: CircleAvatar(
+              // avatar alır
+              backgroundColor: Colors.grey.shade800,
+              child: Text('AB'),
             ),
-            child: DropdownButton(
-              value: dropdownValue,
-              onChanged: (String? value) {
-                // This is called when the user selects an item.
-                setState(() {
-                  dropdownValue = value!;
-                });
-              },
-              items: list.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            )),
+            label: Text('Chip'), // text alır
+          ),
+        ),
+        Expanded(
+          child: IconButton(
+            icon: Icon(Icons.bluetooth),
+            tooltip: 'Buton tipi',
+            onPressed: () {},
+          ),
+        ),
+        Expanded(
+          child: Container(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 117, 150, 208),
+              ),
+              child: DropdownButton(
+                value: dropdownValue,
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    dropdownValue = value!;
+                  });
+                },
+                items: list.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              )),
+        ),
       ]),
     );
   }

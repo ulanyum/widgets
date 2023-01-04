@@ -14,13 +14,15 @@ class Stacks extends StatelessWidget {
           child: Stack(
             children: [
               Center(
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(100),
+                child: Expanded(
+                  child: Container(
+                    width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(100),
+                      ),
                     ),
                   ),
                 ),

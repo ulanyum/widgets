@@ -9,12 +9,14 @@ class Boxlar extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          SizedBox(
-            width: 200.0,
-            height: 300.0,
-            child: Card(
-              child: Center(child: Text('SizedBox')),
-              color: Colors.amberAccent,
+          Expanded(
+            child: SizedBox(
+              width: 200.0,
+              height: 300.0,
+              child: Card(
+                child: Center(child: Text('SizedBox')),
+                color: Colors.amberAccent,
+              ),
             ),
           ),
           Expanded(
@@ -31,14 +33,16 @@ class Boxlar extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minHeight: 200,
-              ),
-              child: Container(
-                child: Center(child: Text("Constrainedbox")),
-                color: Colors.blueAccent,
-                height: 100,
+            child: Expanded(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minHeight: 200,
+                ),
+                child: Container(
+                  child: Center(child: Text("Constrainedbox")),
+                  color: Colors.blueAccent,
+                  height: 100,
+                ),
               ),
             ),
           ),

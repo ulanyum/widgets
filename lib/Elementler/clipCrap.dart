@@ -30,45 +30,51 @@ class _ClipCrapsState extends State<ClipCraps> {
       appBar: AppBar(),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15.0),
-              child: Container(
-                child: Center(
-                  child: Text("ClipRRect",
-                      style: Theme.of(context).textTheme.headline3),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: Container(
+                  child: Center(
+                    child: Text("ClipRRect",
+                        style: Theme.of(context).textTheme.headline3),
+                  ),
+                  color: Colors.blue,
+                  width: 200.0,
+                  height: 200.0,
                 ),
-                color: Colors.blue,
-                width: 200.0,
-                height: 200.0,
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipOval(
-              child: Container(
-                child: Center(
-                  child: Text("ClipOval",
-                      style: Theme.of(context).textTheme.headline3),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipOval(
+                child: Container(
+                  child: Center(
+                    child: Text("ClipOval",
+                        style: Theme.of(context).textTheme.headline3),
+                  ),
+                  color: Colors.amberAccent,
+                  width: 200.0,
+                  height: 200.0,
                 ),
-                color: Colors.amberAccent,
-                width: 200.0,
-                height: 200.0,
               ),
             ),
           ),
-          ClipPath(
-            clipper: CustomsCrap(),
-            child: Container(
-              child: Center(
-                child: Text("Clip Path",
-                    style: Theme.of(context).textTheme.headline3),
+          Expanded(
+            child: ClipPath(
+              clipper: CustomsCrap(),
+              child: Container(
+                child: Center(
+                  child: Text("Clip Path",
+                      style: Theme.of(context).textTheme.headline3),
+                ),
+                color: Colors.redAccent,
+                width: double.infinity,
+                height: 200.0,
               ),
-              color: Colors.redAccent,
-              width: double.infinity,
-              height: 200.0,
             ),
           )
         ],
