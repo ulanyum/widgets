@@ -16,7 +16,7 @@ class SemanticWidgets extends StatelessWidget {
             enabled: true,
             child: Center(
               child: Image.network(
-                "https://instagram.fyei1-1.fna.fbcdn.net/v/t51.2885-19/205581910_539277313919568_1162924141666904830_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fyei1-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=sy-CaXVdsQEAX-pmlPq&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCVHNEGTwZsOdC-se3wXfDpM1vgQPxtiqRxQ2Wvqgj4qQ&oe=63A856B2&_nc_sid=8fd12b",
+                "https://upwork-usw2-prod-assets-static.s3.us-west-2.amazonaws.com/org-logo/1567525450545344512",
                 width: 300,
                 height: 300,
               ),

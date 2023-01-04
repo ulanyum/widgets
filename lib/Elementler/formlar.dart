@@ -14,126 +14,165 @@ class _FormlarState extends State<Formlar> {
   int deger = 0;
   bool calisiyor = false;
   double sliderDeger = 0.0;
-  var isim = TextEditingController();
-  var soyisim = TextEditingController();
-  var email = TextEditingController();
+  FocusNode _isimFocusNode = FocusNode();
+  FocusNode _soyIsimFocusNode = FocusNode();
+  FocusNode _mailFocusNode = FocusNode();
+  FocusNode _kaydetFocusNode = FocusNode();
+
+  var _isim = TextEditingController();
+  var _soyisim = TextEditingController();
+  var _email = TextEditingController();
+
+  @override
+  void dispose() {
+    _isimFocusNode.dispose();
+    _soyIsimFocusNode.dispose();
+    _mailFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(),
-        body: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Form(
-              key: _formKey,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Adı',
+        body: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            _isimFocusNode.unfocus();
+            _soyIsimFocusNode.unfocus();
+            _mailFocusNode.unfocus();
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Form(
+                key: _formKey,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      TextFormField(
+                        focusNode: _isimFocusNode,
+                        decoration: const InputDecoration(
+                          hintText: 'İsim',
+                        ),
+                        validator: (String? isim) {
+                          if (isim == null || isim.isEmpty) {
+                            return 'İsim alanı Boş Geçilemez';
+                          }
+                          return null;
+                        },
+                        onFieldSubmitted: (term) {
+                          _isimFocusNode.unfocus();
+                          FocusScope.of(context)
+                              .requestFocus(_soyIsimFocusNode);
+                        },
                       ),
-                      validator: (String? isim) {
-                        if (isim == null || isim.isEmpty) {
-                          return 'Lütfen Bütün Alanları Doldurunuz';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Soyadı',
+                      TextFormField(
+                        focusNode: _soyIsimFocusNode,
+                        decoration: const InputDecoration(
+                          hintText: 'Soyisim',
+                        ),
+                        validator: (String? soyisim) {
+                          if (soyisim == null || soyisim.isEmpty) {
+                            return 'Soyisim alanı boş geçilemez';
+                          }
+                          return null;
+                        },
+                        onFieldSubmitted: (term) {
+                          _soyIsimFocusNode.unfocus();
+                          FocusScope.of(context).requestFocus(_mailFocusNode);
+                        },
                       ),
-                      validator: (String? soyisim) {
-                        if (soyisim == null || soyisim.isEmpty) {
-                          return 'Lütfen Bütün Alanları Doldurunuz';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Email',
+                      TextFormField(
+                        focusNode: _mailFocusNode,
+                        decoration: const InputDecoration(
+                          hintText: 'Email',
+                        ),
+                        validator: (String? email) {
+                          //bu alana string constains metodu ile @ araması elenecek
+                          if (email == null || email.isEmpty) {
+                            return 'Mail alanı boş geçilemez';
+                          }
+                          return null;
+                        },
+                        onFieldSubmitted: (term) {
+                          _mailFocusNode.unfocus();
+                          FocusScope.of(context).requestFocus(_kaydetFocusNode);
+                        },
                       ),
-                      validator: (String? email) {
-                        //bu alana string constains metodu ile @ araması elenecek
-                        if (email == null || email.isEmpty) {
-                          return 'Lütfen Bütün Alanları Doldurunuz';
-                        }
-                        return null;
-                      },
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {}
-                          },
-                          child: const Text('Kaydet'),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: ElevatedButton(
+                            focusNode: _kaydetFocusNode,
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {}
+                            },
+                            child: const Text('Kaydet'),
+                          ),
                         ),
                       ),
-                    ),
-                    RadioListTile(
-                        title: Text("Erkek"),
-                        value: 1,
-                        groupValue: deger,
-                        onChanged: (int? gelen) {
-                          setState(() {
-                            deger = gelen!;
-                          });
-                        }),
-                    RadioListTile(
-                        title: Text("Kadın"),
-                        value: 2,
-                        groupValue: deger,
-                        onChanged: (int? gelen) {
-                          setState(() {
-                            deger = gelen!;
-                          });
-                        }),
-                    RadioListTile(
-                        title: Text("Diğer"),
-                        value: 3,
-                        groupValue: deger,
-                        onChanged: (int? gelen) {
-                          setState(() {
-                            deger = gelen!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: Text("Checkbox"),
-                        value: calisiyor,
-                        controlAffinity: ListTileControlAffinity.leading,
-                        onChanged: (bool? veri) {
-                          print("Seçildi");
-                          setState(() {
-                            calisiyor = veri!;
-                          });
-                        }),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "İngilizce Seviyeniz " +
-                              sliderDeger.round().toString(),
-                          style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Slider(
-                            value: sliderDeger,
-                            min: 0,
-                            max: 5,
-                            onChanged: (double newValue) {
-                              setState(() {
-                                sliderDeger = newValue;
-                              });
-                            })
-                      ],
-                    ),
-                  ])),
+                      RadioListTile(
+                          title: Text("Erkek"),
+                          value: 1,
+                          groupValue: deger,
+                          onChanged: (int? gelen) {
+                            setState(() {
+                              deger = gelen!;
+                            });
+                          }),
+                      RadioListTile(
+                          title: Text("Kadın"),
+                          value: 2,
+                          groupValue: deger,
+                          onChanged: (int? gelen) {
+                            setState(() {
+                              deger = gelen!;
+                            });
+                          }),
+                      RadioListTile(
+                          title: Text("Diğer"),
+                          value: 3,
+                          groupValue: deger,
+                          onChanged: (int? gelen) {
+                            setState(() {
+                              deger = gelen!;
+                            });
+                          }),
+                      CheckboxListTile(
+                          title: Text("Checkbox"),
+                          value: calisiyor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          onChanged: (bool? veri) {
+                            print("Seçildi");
+                            setState(() {
+                              calisiyor = veri!;
+                            });
+                          }),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "İngilizce Seviyeniz " +
+                                sliderDeger.round().toString(),
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Slider(
+                              value: sliderDeger,
+                              min: 0,
+                              max: 5,
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  sliderDeger = newValue;
+                                });
+                              })
+                        ],
+                      ),
+                    ])),
+          ),
         ));
   }
 }

@@ -7,12 +7,14 @@ class TabbarandTabview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: DefaultTabController(
-      length: 4,
-      child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(
+    return Scaffold(
+      appBar: AppBar(),
+      body: DefaultTabController(
+        length: 4,
+        child: Column(
+          children: [
+            TabBar(
+              labelColor: Colors.black38,
               tabs: [
                 Tab(icon: Icon(Icons.sports_soccer)),
                 Tab(icon: Icon(Icons.sports_basketball)),
@@ -20,16 +22,20 @@ class TabbarandTabview extends StatelessWidget {
                 Tab(icon: Icon(Icons.sports_tennis)),
               ],
             ),
-          ),
-          body: TabBarView(
-            children: [
-              Footballs(),
-              Basketballs(),
-              Volleyballs(),
-              Tenniss(),
-            ],
-          )),
-    ));
+            Expanded(
+              child: TabBarView(
+                children: [
+                  Footballs(),
+                  Basketballs(),
+                  Volleyballs(),
+                  Tenniss(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

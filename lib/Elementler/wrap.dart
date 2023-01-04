@@ -77,10 +77,12 @@ class Wraps extends StatelessWidget {
                         height: 100,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 27),
-                      child: Text("Wrap Widget",
-                          style: Theme.of(context).textTheme.headline2),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 27),
+                        child: Text("Wrap Widget",
+                            style: Theme.of(context).textTheme.headline2),
+                      ),
                     ),
                   ],
                 ),

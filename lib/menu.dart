@@ -37,9 +37,17 @@ class MenuYapimi extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             //Buraya Profilim gelecek
-            child: Text("Profilim"),
+            child: UserAccountsDrawerHeader(
+              accountName: Text("Hasan Tütüncüoğlu"),
+              accountEmail: Text("ulanyum@mailru"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage(
+                  "assets/profil_pic.jpg",
+                ),
+              ),
+            ),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              image: DecorationImage(image: AssetImage("assets/template.jpg")),
             ),
           ),
           ListTile(
